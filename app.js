@@ -39,6 +39,12 @@ app.post('/groceries', function(req,res){
 //     res.redirect("/groceries")
 //     })
 })
+app.post('/groceryItem', function(req, res){
+    let groceryItem = req.body.groceryItem
+    db.none("INSERT INTO groceryItem(itemName) VALUES($1)", [groceryItem]).then(function(){
+        res.redirect("/groceries")
+    })
+    
+})
 
-
-app.listen(3000, () => console.log('App listening on port 3000'))
+app.listen(3000, () => console.log('YeeHaw!'))
